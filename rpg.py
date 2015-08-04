@@ -155,3 +155,19 @@ class Rogue(Player):
 		self.stats = {'BASE_HP': 10, 'BASE_MP': 4, 'BASE_ATK': 7, 'BASE_DFS': 4, 'BASE_MAGIC_ATK': 7, 'BASE_SPD': 10, 'BASE_LUCK': 10}
 		self.modifiers = {'BASE_HP': 2, 'BASE_MP': 2, 'BASE_ATK': 2, 'BASE_DFS': 1, 'BASE_MAGIC_ATK': 2, 'BASE_SPD': 3, 'BASE_LUCK': 3}
 		self.stats_init()
+		
+class Enemy(Character):
+	"""Create Enemy"""
+	def __init__(self):
+		pass
+class Slime(Enemy):
+	"""Create Beast Enemy"""
+	def __init__(self):
+		self.name = "Slime"
+		self.hp = 10
+		self.mp = 0
+		self.atk = 7
+		self.dfs = 4
+		self.spd = 4
+		self.luck = 1
+		self.exp = 10
