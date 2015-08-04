@@ -93,8 +93,33 @@ class Player(Character):
 				break
 
 	# take in enemies defeated from battle and add exp to total player controlled character
+	def calculate_experience(self, enemies):
+		exp_gain = 0
+		for enemy in enemies:
+			self.exp = self.exp + enemy.exp
+			exp_gain = exp_gain + enemy.exp
+		print("{} gained {} exp!".format(self.name, exp_gain))
+		print("{}'s total exp: {}".format(self.name, self.exp))
 
+	def check_inventory(self):
+		if len(self.inventory) > 0:
+			for idx, item in enumerate(self.inventory):
+				print("{}. {}".format(idx, item.name))
 
+			valid_item = False
+			while not valid_item:
+				item = input("Pick an item: ")
+				try:
+					item = int(item)
+					valid_item = 0 <= item <= idx
+				except ValueError:
+					pass
+				if not valid_item:
+					print("Invalid Target")
+			else:
+				self.inventory[item].use_potion(self)
+		else:
+			raise Exception("You have no items")
 
 
 	# create different class types
