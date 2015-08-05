@@ -155,7 +155,7 @@ class Rogue(Player):
 		self.stats = {'BASE_HP': 10, 'BASE_MP': 4, 'BASE_ATK': 7, 'BASE_DFS': 4, 'BASE_MAGIC_ATK': 7, 'BASE_SPD': 10, 'BASE_LUCK': 10}
 		self.modifiers = {'BASE_HP': 2, 'BASE_MP': 2, 'BASE_ATK': 2, 'BASE_DFS': 1, 'BASE_MAGIC_ATK': 2, 'BASE_SPD': 3, 'BASE_LUCK': 3}
 		self.stats_init()
-		
+
 class Enemy(Character):
 	"""Create Enemy"""
 	def __init__(self):
@@ -171,3 +171,28 @@ class Slime(Enemy):
 		self.spd = 4
 		self.luck = 1
 		self.exp = 10
+
+class Item():
+	"""Define item class"""
+	name = ""
+	def __init__(self):
+		pass
+
+class Weapon(Item):
+	"""Define Weapon Item"""
+	def __init__(self):
+		self.type = "Weapon"
+
+class Potion(Item):
+	def __init__(self):
+		self.name = "Healing potion"
+		self.type = "Aid"
+		self.short_desc = "Heals 5 HP"
+		self.hp = 5
+
+	def use_potion(self, user):
+		print("{} used a potion!".format(user.name))
+		if user.hp + self.hp < user.stats['BASE_HP']:
+			user.hp = user.hp + self.hp
+		else:
+			user.hp = user.stats['BASE_HP']
