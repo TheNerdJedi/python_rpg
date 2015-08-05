@@ -196,3 +196,26 @@ class Potion(Item):
 			user.hp = user.hp + self.hp
 		else:
 			user.hp = user.stats['BASE_HP']
+
+def character_create():
+	name = input("Hello brave adventurer, what is your name? : ")
+	print()
+	print("1. Fighter\n2. Mage\n3. Rogue")
+	print()
+
+	chosen = False
+	while not chosen:
+		class_choice = input("Please choose a class: ")
+		print()
+		if class_choice == "1":
+			return Fighter(name)
+			chosen = True
+		elif class_choice == "2":
+			return Mage(name)
+			chosen = True
+		elif class_choice == "3":
+			return Rogue(name)
+			chosen = True
+		else:
+			print("Invalid input. Please pick 1, 2, 3")
+			continue
