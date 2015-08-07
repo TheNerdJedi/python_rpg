@@ -219,3 +219,76 @@ def character_create():
 		else:
 			print("Invalid input. Please pick 1, 2, 3")
 			continue
+
+
+
+
+
+
+def check_health(party):
+
+	for person in party:
+		if(person.hp > 0):
+			return True
+
+	return False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	def main():
+
+	player = character_create()
+	potion = Potion()
+	player.inventory.append(potion)
+	friend = Mage("Dude")
+
+	print("You are {}, the {}".format(player.name, player.class_type))
+	print()
+	print("As you travel throught the forest you encounter a fork in the road.\nWhich way do you go?")
+	print("1. Left\n2. Right")
+	print()
+	direction = input("Pick a path: ")
+	print()
+	if direction == "1":
+		back = False
+		while not back:
+			slime = Slime()
+			slime2 = Slime()
+
+			print("Enemies Appear!")
+			battle([player, friend, slime, slime2], [player, friend], [slime, slime2])
+			if player.hp > 0:
+				print("Behind the beast was a dead end. Do you want to turn back?")
+				print("1. Yes\n2. No")
+				print()
+				go_back = input("Go back? : ")
+				if go_back == "1":
+					print("As you head back you see another adventurer walking away from the other path with boundless treasure, too bad you didn't go that way.")
+					back = True
+				elif go_back == "2":
+					continue
+			else:
+				break
+	elif direction == "2":
+		print("You discover boundless treasure and will never have to work another day of you life!")
+
+	print("Game over.")
+
+if __name__ == '__main__':
+	main()
