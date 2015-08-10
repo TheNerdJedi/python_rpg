@@ -220,10 +220,10 @@ def character_create():
 			print("Invalid input. Please pick 1, 2, 3")
 			continue
 
+def turn_order(combatants):
+	speed_order = sorted(combatants, key=lambda character: character.spd, reverse=True)
 
-
-
-
+	return speed_order
 
 def check_health(party):
 
@@ -233,23 +233,27 @@ def check_health(party):
 
 	return False
 
+def pick_target(enemies):
 
+	print("Which enemy do you target?")
+	print()
 
+	for idx, enemy in enumerate(enemies):
+		print("{}. {} HP: {}".format(idx, enemy.name, enemy.hp))
 
+	valid_target = False
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	while not valid_target:
+		target = input("Pick Target: ")
+		try:
+			target = int(target)
+			valid_target = 0 <= target <= idx
+		except ValueError:
+			pass
+		if not valid_target:
+			print("Invalid Target")
+	else:
+		return target
 
 	def main():
 
